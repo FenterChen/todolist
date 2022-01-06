@@ -1,25 +1,70 @@
 <template>
-  <div class="input-group mb-3 w-75 container">
-    <input
-      type="text"
-      class="form-control"
-      placeholder="TASK"
-      aria-label="Recipient's username"
-      aria-describedby="basic-addon2"
-      v-model="task"
-    />
-    <input
-      type="text"
-      class="form-control"
-      placeholder="ASSIGNEE"
-      aria-label="Recipient's username"
-      aria-describedby="basic-addon2"
-      v-model="assignee"
-    />
-    <div class="input-group-append">
-      <button @click="add" class="input-group-text" id="basic-addon2">
-        add
-      </button>
+  <div class="w-75 m-auto d-flex justify-content-between">
+    <!-- Button trigger modal -->
+    <button
+      type="button"
+      class="btn btn-primary float-right m-2"
+      data-bs-toggle="modal"
+      data-bs-target="#example"
+    >
+      Add List
+    </button>
+
+    <!-- Modal -->
+    <div
+      class="modal fade"
+      id="example"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="exampleModalCenterTitle"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Add list</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            .
+            <div class="input-group mb-3 w-75 container">
+              <input
+                type="text"
+                class="form-control"
+                placeholder="TASK"
+                aria-label="Recipient's username"
+                aria-describedby="basic-addon2"
+                v-model="task"
+              />
+              <input
+                type="text"
+                class="form-control"
+                placeholder="ASSIGNEE"
+                aria-label="Recipient's username"
+                aria-describedby="basic-addon2"
+                v-model="assignee"
+              />
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+            <button type="button" class="btn btn-primary" @click="add">
+              confirm
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>

@@ -13,7 +13,7 @@ Vue.config.productionTip = false;
 const httpLink = new HttpLink({
   uri: 'http://35.189.161.175:8080/v1/graphql',
   headers: {
-    'x-hasura-admin-secret': 'myadminsecretkey'
+    'x-hasura-admin-secret': 'myadminsecretkey',
   }
 });
 
