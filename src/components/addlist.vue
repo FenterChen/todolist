@@ -1,16 +1,13 @@
 <template>
-  <div class="w-75 m-auto d-flex justify-content-between">
-    <!-- Button trigger modal -->
+  <div>
     <button
       type="button"
-      class="btn btn-primary float-right m-2"
+      class="btn btn-primary float-right m-3"
       data-bs-toggle="modal"
       data-bs-target="#example"
     >
       Add List
     </button>
-
-    <!-- Modal -->
     <div
       class="modal fade"
       id="example"
@@ -86,8 +83,8 @@ export default {
   name: "addlist",
   data() {
     return {
-      task: null,
-      assignee: null,
+      task: "",
+      assignee: "",
     };
   },
   methods: {

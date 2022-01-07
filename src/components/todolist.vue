@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="w-75 m-auto">
     <div
       class="modal fade"
       id="staticBackdrop"
@@ -91,8 +91,8 @@
         </div>
       </div>
     </div>
-    <table class="container table w-75 table-striped">
-      <thead class="table-primary text-muted text-uppercase">
+    <table class="table table-striped">
+      <thead class="table-primary text-muted text-capitalize">
         <tr>
           <th scope="col">edit</th>
           <th scope="col">id</th>
@@ -190,6 +190,7 @@ export default {
       },
     },
   },
+  mounted() {},
   methods: {
     editinfo(item) {
       this.id = item.id;
@@ -230,7 +231,6 @@ export default {
   cursor: pointer;
 }
 tr td {
-  max-width: 400px;
   word-break: break-all;
 }
 </style>
