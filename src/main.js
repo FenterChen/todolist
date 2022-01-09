@@ -2,11 +2,14 @@ import Vue from 'vue';
 import App from './App.vue';
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import jQuery from 'jquery';
+window.$ = window.jQuery = jQuery;
 import { ApolloClient } from 'apollo-client';
 import { HttpLink } from 'apollo-link-http';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 
 import VueApollo from 'vue-apollo';
+import store from './store'
 
 Vue.config.productionTip = false;
 
@@ -31,5 +34,6 @@ const apolloProvider = new VueApollo({
 
 new Vue({
   apolloProvider,
-  render: h => h(App),
+  store,
+  render: h => h(App)
 }).$mount('#app')

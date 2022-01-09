@@ -2,33 +2,39 @@
   <div class="row row-cols-lg-auto g-3 align-items-center">
     <div class="col-12">
       <label class="visually-hidden" for="inlineFormInputGroupUsername"
-        >keyword</label
+        >Keyword</label
       >
       <div class="input-group">
         <input
           type="text"
           class="form-control"
           id="inlineFormInputGroupUsername"
-          placeholder="keyword"
+          placeholder="Keyword"
           v-model="searchval"
         />
       </div>
     </div>
 
-    <div class="col-12">
-      <select class="form-select" id="inlineFormSelectPref">
-        <option selected>Choose...</option>
-        <option value="id">Id</option>
-        <option value="task">Task</option>
-        <option value="assignee">Assignee</option>
+    <div>
+      <select
+        class="form-select"
+        id="inlineFormSelectPref"
+        v-model="searchcolum"
+      >
+        <option value="All">All</option>
+        <option value="Id">Id</option>
+        <option value="Task">Task</option>
+        <option value="Assignee">Assignee</option>
       </select>
     </div>
 
-    <div class="col-12">
+    <div>
       <button type="submit" class="btn btn-info" @click="search">Search</button>
     </div>
-    <div class="col-12">
-      <button type="submit" class="btn btn-secondary">Cancel</button>
+    <div>
+      <button type="submit" class="btn btn-secondary" @click="reset">
+        reset
+      </button>
     </div>
   </div>
 </template>
@@ -38,6 +44,7 @@ export default {
   name: "searchlist",
   data() {
     return {
+      searchcolum: "All",
       task: "",
       assignee: "",
       searchval: "",
@@ -46,11 +53,47 @@ export default {
   methods: {
     search() {
       let search = this.searchval;
-      this.list = this.list.filter(function (index) {
-        return Object.keys(index).some(function (key) {
-          return String(index[key]).indexOf(search) != -1;
+      let newdata = [];
+      if (this.searchcolum == "All") {
+        this.$store.state.alllist = this.$store.state.alllist.filter(
+          (index) => {
+            return Object.keys(index).some((key) => {
+              return String(index[key]).indexOf(search) != -1;
+            });
+          }
+        );
+      } else if (this.searchcolum == "Id") {
+        this.$store.state.alllist.forEach((item) => {
+          if (String(item.id).indexOf(search) != -1) {
+            newdata.push(item);
+          }
         });
-      });
+        this.$store.state.alllist = newdata;
+      } else if (this.searchcolum == "Task") {
+        this.$store.state.alllist.forEach((item) => {
+          if (String(item.task).indexOf(search) != -1) {
+            newdata.push(item);
+          }
+        });
+        this.$store.state.alllist = newdata;
+      } else if (this.searchcolum == "Assignee") {
+        this.$store.state.alllist.forEach((item) => {
+          if (String(item.assignee).indexOf(search) != -1) {
+            newdata.push(item);
+          }
+        });
+        this.$store.state.alllist = newdata;
+      }
+      this.$store.commit("setlist", this.alllist);
+    },
+    reset() {
+      this.searchval = "";
+      location.reload();
+    },
+  },
+  computed: {
+    alllist() {
+      return this.$store.state.alllist;
     },
   },
 };

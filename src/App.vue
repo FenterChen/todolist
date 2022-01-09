@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png" />
+    <img class="logo" alt="Vue logo" src="./assets/logo.png" />
     <div class="w-75 m-auto d-flex justify-content-between">
       <searchlist></searchlist>
       <addlist></addlist>
@@ -29,7 +29,7 @@ export default {
   text-align: center;
   margin-top: 30px;
 }
-#app img {
+#app .logo {
   width: 5%;
   margin-bottom: 10px;
 }
